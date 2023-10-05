@@ -98,7 +98,7 @@ function ContactApp() {
           name="image"
           onChange={handleImageUpload}
         />
-        <button className='btn ml-[120px] mt-3' onClick={addContact}>Add Contact</button>
+        <button className='btn ml-[120px] mt-3' onClick={addContact}>Add your loved ones here</button>
       </div>
       <div className="contact-list">
         {contacts.map((contact, index) => (
