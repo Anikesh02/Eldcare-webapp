@@ -1,0 +1,83 @@
+/* src/components/AppointmentCard.css */
+
+.appointment-card {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  border: 1px solid #000000;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px auto; /* Center horizontally */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(#7FDBFF, white);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  max-width: 300px;
+}
+
+.appointment-card:hover {
+ 
+  transform: scale(1.05); /* Add a slight zoom effect on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  cursor: pointer; /* Increase box shadow on hover */
+}
+
+.card-content {
+  display: flex;
+ 
+
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  text-align: center; /* Center text within the card */
+}
+
+.profile-image {
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 50%;
+  margin-bottom: 16px; /* Add spacing between image and info */
+}
+
+.hospital-name {
+  font-size: 1.4rem;
+  margin: 0;
+  color: #333;
+}
+
+.time-slot {
+  margin: 8px 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+.contact-number {
+  margin: 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+.cancel-button {
+  background-color: #ff3333; /* Red background color */
+  color: #fff; /* White text color */
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.cancel-button:hover {
+  background-color: #ff0000; /* Darker red on hover */
+}
+.delete-btn{
+  background-color: red;
+  color: white;
+  padding: 3px 12px;
+  border-radius: 5px;
+}
+
+.call-btn{
+  background-color: #28ed3f;
+  color: black;
+  padding: 8px 32px;
+  border-radius: 5px;
+}
