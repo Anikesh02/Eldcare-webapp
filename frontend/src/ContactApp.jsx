@@ -8,8 +8,6 @@ import { onAuthStateChanged } from 'firebase/auth';
 function ContactApp() {
   const [contacts, setContacts] = useState([]);
   const [newContact, setNewContact] = useState({ name: '', phoneNumber: '', image: '' });
-
-
   const { user, updateUser } = useUser();
 
   useEffect(() => {
@@ -24,10 +22,6 @@ function ContactApp() {
     return () => unsubscribe();
   }, [updateUser]);
 
-  console.log(user);
-  console.log(user?.name);
-
-  // Load contacts from localStorage when the app starts
   useEffect(() => {
     const savedContacts = JSON.parse(localStorage.getItem('contacts')) || [];
     setContacts(savedContacts);
@@ -55,7 +49,6 @@ function ContactApp() {
     const updatedContacts = [...contacts, newContact];
     setContacts(updatedContacts);
 
-    // Save contacts to localStorage
     localStorage.setItem('contacts', JSON.stringify(updatedContacts));
 
     setNewContact({ name: '', phoneNumber: '', image: '' });
@@ -64,49 +57,59 @@ function ContactApp() {
   const deleteContact = (contactToDelete) => {
     const updatedContacts = contacts.filter((contact) => contact !== contactToDelete);
 
-    // Save updated contacts to localStorage
     localStorage.setItem('contacts', JSON.stringify(updatedContacts));
 
     setContacts(updatedContacts);
   };
 
   return (
-  <section>
-    <div className="container ">
-      <h1 className='heading  mb-9 text-center'>Hello, {user?.name ? user.name : 'User'}</h1>
-      
-      <div className="contact-form ml-[60px] mt-3">
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          value={newContact.name}
-          onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          className='mb-3'
-          name="phoneNumber"
-          placeholder="Phone Number"
-          value={newContact.phoneNumber}
-          onChange={handleInputChange}
-        />
-        <input
-          type="file"
-          
-          accept="image/*"
-          name="image"
-          onChange={handleImageUpload}
-        />
-        <button className='btn ml-[120px] mt-3' onClick={addContact}>Add your loved ones here</button>
+    <section className="bg-gray-200 min-h-screen">
+      <div className="container mx-auto py-10">
+        <h1 className="text-3xl font-bold mb-9 text-center">
+          Hello, <span className="text-blue-500">{user?.name ? user.name : 'User'}</span>
+        </h1>
+        <div className="flex flex-col items-center mt-3">
+          <div className="flex flex-wrap items-center mb-3">
+            <input
+              type="text"
+              name="name"
+              placeholder="Enter name"
+              value={newContact.name}
+              onChange={handleInputChange}
+              className="py-2 px-4 rounded-lg border border-gray-300 mb-2 placeholder-gray-500 w-full sm:w-auto"
+            />
+            <input
+              type="text"
+              name="phoneNumber"
+              placeholder="Enter phone number"
+              value={newContact.phoneNumber}
+              onChange={handleInputChange}
+              className="py-2 px-4 rounded-lg border border-gray-300 mb-2 placeholder-gray-500 w-full sm:w-auto"
+            />
+            <label className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-lg ml-2 cursor-pointer mb-2">
+              <span>Upload Image</span>
+              <input
+                type="file"
+                accept="image/*"
+                name="image"
+                onChange={handleImageUpload}
+                className="hidden"
+              />
+            </label>
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-lg ml-2 mb-2"
+              onClick={addContact}
+            >
+              Add Contact
+            </button>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {contacts.map((contact, index) => (
+            <ContactCard key={index} contact={contact} onDelete={deleteContact} />
+          ))}
+        </div>
       </div>
-      <div className="contact-list">
-        {contacts.map((contact, index) => (
-          <ContactCard key={index} contact={contact} onDelete={deleteContact} />
-        ))}
-      </div>
-    </div>
-   
     </section>
   );
 }

@@ -12,14 +12,16 @@ const AppointmentsList = () => {
   };
 
   return (
-    <div className="appointments-container">
-      {appointments.map(appointment => (
-        <AppointmentCard
-          key={appointment.id}
-          appointment={appointment}
-          onCancel={() => cancelAppointment(appointment.id)}
-        />
-      ))}
+    <div className="bg-gray-200 p-4">
+      <div className="appointments-container">
+        {appointments.map(appointment => (
+          <AppointmentCard
+            key={appointment.id}
+            appointment={appointment}
+            onCancel={() => cancelAppointment(appointment.id)}
+          />
+        ))}
+      </div>
     </div>
   );
 };
