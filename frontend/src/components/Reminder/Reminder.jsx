@@ -9,7 +9,6 @@ function Reminder() {
   const addReminder = () => {
     if (text.trim() === '' || time.trim() === '') return;
 
-   
     const reminderTime = new Date(time);
 
     if (isNaN(reminderTime.getTime())) {
@@ -17,24 +16,19 @@ function Reminder() {
       return;
     }
 
-   
     setReminders([...reminders, { text, time: reminderTime }]);
     setText('');
     setTime('');
   };
 
-
   useEffect(() => {
     const timer = setInterval(() => {
       const currentTime = new Date();
 
-      
       reminders.forEach((reminder, index) => {
         if (reminder.time <= currentTime) {
-          
           alert(`Reminder: ${reminder.text}`);
 
-          
           const updatedReminders = [...reminders];
           updatedReminders.splice(index, 1);
           setReminders(updatedReminders);
@@ -46,8 +40,8 @@ function Reminder() {
   }, [reminders]);
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-semibold mb-4">Reminder App</h1>
+    <div className="bg-gray-200 min-h-screen p-6">
+      <h1 className="text-3xl font-semibold mb-7 text-center">Reminder App</h1>
       <div className="flex">
         <input
           type="text"
@@ -71,7 +65,7 @@ function Reminder() {
       </div>
       <ul className="mt-4">
         {reminders.map((reminder, index) => (
-          <li key={index} className="py-2">
+          <li key={index} className={`py-2 ${index % 2 === 0 ? 'bg-blue-100' : 'bg-blue-200'}`}>
             {`${reminder.text} - ${reminder.time.toLocaleString()}`}
           </li>
         ))}
