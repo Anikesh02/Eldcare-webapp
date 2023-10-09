@@ -9,7 +9,7 @@ function Reminder() {
   const addReminder = () => {
     if (text.trim() === '' || time.trim() === '') return;
 
-    // Parse the user-provided time
+   
     const reminderTime = new Date(time);
 
     if (isNaN(reminderTime.getTime())) {
@@ -17,24 +17,24 @@ function Reminder() {
       return;
     }
 
-    // Add the reminder
+   
     setReminders([...reminders, { text, time: reminderTime }]);
     setText('');
     setTime('');
   };
 
-  // Check for reminders at regular intervals
+
   useEffect(() => {
     const timer = setInterval(() => {
       const currentTime = new Date();
 
-      // Check each reminder for notification
+      
       reminders.forEach((reminder, index) => {
         if (reminder.time <= currentTime) {
-          // Show a notification
+          
           alert(`Reminder: ${reminder.text}`);
 
-          // Remove the reminder from the list
+          
           const updatedReminders = [...reminders];
           updatedReminders.splice(index, 1);
           setReminders(updatedReminders);
