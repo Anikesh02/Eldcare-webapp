@@ -12,6 +12,7 @@ import Appointment from '../pages/Doctors/Appointment'
 
 import {Routes, Route} from 'react-router-dom'
 import Notifications from '../pages/Notification'
+import Reminder from '../components/Reminder/Reminder'
 
 
 const Routers = () => {
@@ -26,6 +27,8 @@ const Routers = () => {
     <Route path='/contactUs' element={<Contact/>}></Route>
     <Route path='/services' element={<Notifications/>}></Route>
     <Route path='/appointment' element={<Appointment/>}></Route>
+    <Route path='/reminder' element={<Reminder/>}></Route>
+
     
   </Routes>
   

@@ -18,6 +18,10 @@ const navLinks = [
     display: "Notifications",
   },
   {
+    path: "/reminder",
+    display: "Reminder",
+  },
+  {
     path: "/contactUs",
     display: "Contact Us",
   },
