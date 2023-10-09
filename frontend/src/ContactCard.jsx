@@ -1,11 +1,12 @@
 import React from 'react';
+import {IoCallSharp} from "react-icons/io5" 
+import {AiFillDelete} from "react-icons/ai"
+
+
 
 const ContactCard = ({ contact, onDelete }) => {
-  const handleDeleteClick = () => {
-    const shouldDelete = window.confirm(`Are you sure you want to delete ${contact.name}?`);
-    if (shouldDelete) {
-      onDelete(contact);
-    }
+  const gradientStyle = {
+    backgroundImage: 'linear-gradient(rgb(56, 189, 248), rgb(186, 230, 253))',
   };
 
   return (
@@ -15,7 +16,7 @@ const ContactCard = ({ contact, onDelete }) => {
       <button className='call-btn mb-3' onClick={() => console.log(`Calling ${contact.name} at ${contact.phoneNumber}`)}>
         Call
       </button>
-      <button className='delete-btn' onClick={handleDeleteClick}>Delete Nunber</button>
+      <button className='delete-btn' onClick={handleDeleteClick}>Delete Contact</button>
     </div>
   );
 };
