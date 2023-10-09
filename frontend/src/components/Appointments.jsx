@@ -11,6 +11,7 @@ const Appointments = ({ appointments }) => {
   };
 
   return (
+    <div className="flex flex-col md:flex-row bg-gray-200 p-4 rounded-lg mb-4 shadow-md mx-auto max-w-lg">
     <div className="Appointments bg-blue-200 p-4 rounded-lg shadow-lg mb-5">
       <h2 className='heading text-lg font-bold mb-4'>Upcoming Appointments</h2>
       <ul>
@@ -23,6 +24,7 @@ const Appointments = ({ appointments }) => {
           </li>
         ))}
       </ul>
+      </div>
     </div>
   );
 };

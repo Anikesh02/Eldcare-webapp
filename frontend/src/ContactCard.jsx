@@ -1,4 +1,8 @@
 import React from 'react';
+import {IoCallSharp} from "react-icons/io5" 
+import {AiFillDelete} from "react-icons/ai"
+
+
 
 const ContactCard = ({ contact, onDelete }) => {
   const gradientStyle = {
@@ -16,14 +20,16 @@ const ContactCard = ({ contact, onDelete }) => {
       <div className="text-gray-600 mb-4">{contact.phoneNumber}</div>
       <div className="flex justify-between w-full p-4">
         <button
-          className="bg-red-500 hover:bg-red-700 text-white py-2 px-3 rounded-lg mr-4"
+          className="bg-red-500 hover:bg-red-700 text-white py-5 px-6 rounded-lg mr-4"
           onClick={() => onDelete(contact)}
         >
-          Delete
+          <AiFillDelete />
         </button>
-        <button className="bg-green-500 hover:bg-green-700 text-white py-2 px-6 rounded-lg">
-          Call
+        <button className="bg-green-500 hover:bg-green-700 text-white py-5 px-16 rounded-lg">
+        <IoCallSharp />
+          
         </button>
+       
       </div>
     </div>
   );
