@@ -13,6 +13,7 @@
   max-width: 300px;
 }
 
+
 .appointment-card:hover {
  
   transform: scale(1.05); /* Add a slight zoom effect on hover */
