@@ -1,12 +1,11 @@
 import React from 'react';
-import {IoCallSharp} from "react-icons/io5" 
-import {AiFillDelete} from "react-icons/ai"
-
-
 
 const ContactCard = ({ contact, onDelete }) => {
-  const gradientStyle = {
-    backgroundImage: 'linear-gradient(rgb(56, 189, 248), rgb(186, 230, 253))',
+  const handleDeleteClick = () => {
+    const shouldDelete = window.confirm(`Are you sure you want to delete ${contact.name}?`);
+    if (shouldDelete) {
+      onDelete(contact);
+    }
   };
 
   return (
