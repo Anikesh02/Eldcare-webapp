@@ -15,7 +15,7 @@ const ContactCard = ({ contact, onDelete }) => {
       <button className='call-btn mb-3' onClick={() => console.log(`Calling ${contact.name} at ${contact.phoneNumber}`)}>
         Call
       </button>
-      <button className='delete-btn' onClick={handleDeleteClick}>Delete Contact</button>
+      <button className='delete-btn' onClick={handleDeleteClick}>Delete Nunber</button>
     </div>
   );
 };
