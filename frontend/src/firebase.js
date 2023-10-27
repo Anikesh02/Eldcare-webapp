@@ -1,7 +1,8 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, onAuthStateChanged } from "firebase/auth";
-import { getFirestore, setDoc, doc, getDoc } from 'firebase/firestore';
+import { getFirestore, setDoc, doc, getDocs, where, collection, query } from 'firebase/firestore';
 import { getStorage, getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import appointmentsData from "./data/appointments";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBOmxLNfLGGTFefhXGQXZUmsvj-LdrP0oc",
@@ -66,6 +67,29 @@ async function logInUser(email, password) {
   }
 }
 
+async function getAppointmentData(uid) {
+  const docRef = collection(db, "appointments");
+  console.log(uid);
 
-export { createUser, logInUser, auth };
+  var appointmentsData = [];
+
+  const q = query(docRef, where("user", "==", uid));
+
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    appointmentsData.push(doc.data());
+    console.log(doc.id, " => ", doc.data());
+  });
+  return appointmentsData;
+}
+
+async function logOutUser() {
+  try {
+    await auth.signOut();
+  } catch (error) {
+    console.error("Logout failed:", error);
+  }
+}
+
+export { createUser, logInUser, auth, db, storage, getAppointmentData, logOutUser};
 export default app;

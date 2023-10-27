@@ -38,8 +38,8 @@ const Home = () => {
     return () => unsubscribe();
   }, [updateUser]);
 
-  console.log(user);
-  console.log(user?.name);
+  // console.log(user);
+  // console.log(user?.name);
 
 
   return (
