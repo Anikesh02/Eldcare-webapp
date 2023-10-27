@@ -15,6 +15,8 @@ function ContactApp() {
       if (user) {
         const { uid, displayName, photoURL, email } = user;
         updateUser({ uid, name: displayName, photoURL, email });
+        console.log("Hello" + user.uid);
+        localStorage.setItem('user', JSON.stringify(user));
       } else {
         updateUser(null);
       }
