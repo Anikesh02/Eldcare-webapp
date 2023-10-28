@@ -4,12 +4,15 @@ import {AiFillDelete} from "react-icons/ai"
 
 
 const ContactCard = ({ contact, onDelete }) => {
+
+  
   const gradientStyle = {
     backgroundImage: 'linear-gradient(rgb(56, 189, 248), rgb(186, 230, 253))',
+    
   };
 
   return (
-    <div className="flex flex-col items-center rounded-lg shadow-lg m-6 w-64" style={gradientStyle}>
+    <div className="flex flex-col items-center rounded-lg shadow-lg m-11 w-74" style={gradientStyle}>
       <img
         src={contact.image}
         alt={`${contact.name}'s avatar`}
@@ -19,7 +22,7 @@ const ContactCard = ({ contact, onDelete }) => {
       <div className="text-gray-600 mb-4">{contact.phoneNumber}</div>
       <div className="flex justify-between w-full p-4">
         <button
-          className="bg-red-500 hover:bg-red-700 text-white py-5 px-6 rounded-lg mr-4"
+          className="bg-red-500 hover:bg-red-700 text-white py-5 px-6 rounded-lg mr-8"
           onClick={() => onDelete(contact)}
         >
           <AiFillDelete /> 
