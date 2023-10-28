@@ -1,21 +1,35 @@
 import React from 'react';
+import {FiPhoneCall} from "react-icons/fi" 
+import {AiFillDelete} from "react-icons/ai"
+
 
 const ContactCard = ({ contact, onDelete }) => {
-  const handleDeleteClick = () => {
-    const shouldDelete = window.confirm(`Are you sure you want to delete ${contact.name}?`);
-    if (shouldDelete) {
-      onDelete(contact);
-    }
+  const gradientStyle = {
+    backgroundImage: 'linear-gradient(rgb(56, 189, 248), rgb(186, 230, 253))',
   };
 
   return (
-    <div className="contact-card">
-      <img src={contact.image} alt={contact.name} />
-      <h2 className='text-2xl mb-2 font-bold'>{contact.name}</h2>
-      <button className='call-btn mb-3' onClick={() => console.log(`Calling ${contact.name} at ${contact.phoneNumber}`)}>
-        Call
-      </button>
-      <button className='delete-btn' onClick={handleDeleteClick}>Delete Contact</button>
+    <div className="flex flex-col items-center rounded-lg shadow-lg m-6 w-64" style={gradientStyle}>
+      <img
+        src={contact.image}
+        alt={`${contact.name}'s avatar`}
+        className="w-32 h-32 rounded-full mb-2 mt-4"  
+      />
+      <div className="text-xl font-bold mb-2">{contact.name}</div>
+      <div className="text-gray-600 mb-4">{contact.phoneNumber}</div>
+      <div className="flex justify-between w-full p-4">
+        <button
+          className="bg-red-500 hover:bg-red-700 text-white py-5 px-6 rounded-lg mr-4"
+          onClick={() => onDelete(contact)}
+        >
+          <AiFillDelete /> 
+        </button>
+        <button className="bg-green-500 hover:bg-green-700 text-white py-5 px-16 rounded-lg"  onClick={() => console.log(`Calling ${contact.name} at ${contact.phoneNumber}`)}>
+        <FiPhoneCall />
+          
+        </button>
+       
+      </div>
     </div>
   );
 };
